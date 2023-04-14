@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
-import start from './src/controllers/start.js';
-import { create } from 'venom-bot'  
+import start from './controllers/start.js';
+import { create } from 'venom-bot'
 
 dotenv.config()
 

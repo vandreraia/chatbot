@@ -1,23 +1,21 @@
 import openai from "../config/openAi.js";
 
-const getGpt3Response = async (clientText) => {
+const getGpt3Response = async (messages) => {
     const options = {
         model: "gpt-3.5-turbo", // Modelo GPT a ser usado
-        messages: [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": clientText}
-        ],
+        messages,
         temperature: 1, // Nível de variação das respostas geradas, 1 é o máximo
         max_tokens: 4000 // Quantidade de tokens (palavras) a serem retornadas pelo bot, 4000 é o máximo
     }
-    console.log(`text: ${clientText}`)
     try {
         const completion = await openai.createChatCompletion(options);
-          let botResponse = completion.data.choices[0].message.content;
-          console.log(botResponse)
+        // messages.push(completion.data.choices[0].message)
+        let botResponse = completion.data.choices[0].message.content;
+        console.log(botResponse)
         return `Chat GPT 🤖:\n\n ${botResponse}`
     } catch (e) {
-        return `❌ OpenAI Response Error: ${e}`
+        console.log(e.data)
+        return `❌ OpenAI Response Error: ${e.data}`
     }
 }
 
@@ -36,4 +34,4 @@ const getDalleResponse = async (clientText) => {
     }
 }
 
-export {getGpt3Response, getDalleResponse}
+export { getGpt3Response, getDalleResponse }

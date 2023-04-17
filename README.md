@@ -1,6 +1,6 @@
 # Whatsapp chatGPT bot
 
-Usage
+Usage:
 
 git clone https://github.com/vandreraia/chatbot.git to your machine
 

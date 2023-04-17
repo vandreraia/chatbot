@@ -2,7 +2,7 @@ import { getGpt3Response, getDalleResponse } from "../bots/openAi.js";
 
 const commands = (client, message, messageLog) => {
     const iaCommands = {
-        gpt3: "/bot",
+        gpt3: "/oraculo",
         dalle: "/img"
     }
     let firstWord = message.body.substring(0, message.body.indexOf(" "));
@@ -11,7 +11,6 @@ const commands = (client, message, messageLog) => {
         case iaCommands.gpt3:
             const question = message.body.substring(message.body.indexOf(" "));
             messageLog.push({ "role": "user", "content": question })
-            console.log(messageLog)
             getGpt3Response(messageLog).then((response) => {
                 /*
                  * Faremos uma validação no message.from

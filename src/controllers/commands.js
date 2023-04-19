@@ -1,8 +1,8 @@
-import { getGpt3Response, getDalleResponse } from "../bots/openAi.js";
+import { getGpt3Response, getDalleResponse } from "../utils/bots/openAi.js";
 
 const commands = (client, message, messageLog) => {
     const iaCommands = {
-        gpt3: "/oraculo",
+        gpt3: "/gpt",
         dalle: "/img"
     }
     let firstWord = message.body.substring(0, message.body.indexOf(" "));
@@ -12,13 +12,6 @@ const commands = (client, message, messageLog) => {
             const question = message.body.substring(message.body.indexOf(" "));
             messageLog.push({ "role": "user", "content": question })
             getGpt3Response(messageLog).then((response) => {
-                /*
-                 * Faremos uma validação no message.from
-                 * para caso a gente envie um comando
-                 * a response não seja enviada para
-                 * nosso próprio número e sim para 
-                 * a pessoa ou grupo para o qual eu enviei
-                 */
                 client.sendText(message.from === process.env.BOT_NUMBER ? message.to : message.from, response)
             })
             break;

@@ -5,6 +5,7 @@ export default function vitals(message) {
     console.log(humanDateFormat);
     console.log("___________________________________")
     console.log(message.sender.pushname);
+    console.log(message.body);
     console.log("___________________________________")
     if (message.body.toLowerCase() === "hello") {
         client.sendText(message.from, `Ola ${message.sender.pushname}, essa é uma mensagem automatizada`)

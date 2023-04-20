@@ -1,6 +1,6 @@
 {
   "name": "chatbot",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "chatbot for whatsapp",
   "main": "index.js",
   "type": "module",
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js"
   },
-  "author": "Vandré",
+  "author": "Vandré Raia",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",

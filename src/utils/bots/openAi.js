@@ -1,10 +1,11 @@
 import openai from "../../config/openAi.js";
 
-const getGpt3Response = async (messageLog) => {
+const getGpt3Response = async (messageLog, temperature = 0.8) => {
+    console.log(temperature)
     const options = {
         model: "gpt-3.5-turbo", // Modelo GPT a ser usado
         messages: messageLog,
-        temperature: 1, // Nível de variação das respostas geradas, 2 é o máximo
+        temperature, // Nível de variação das respostas geradas, 2 é o máximo
     }
     try {
         const completion = await openai.createChatCompletion(options);
@@ -16,7 +17,7 @@ const getGpt3Response = async (messageLog) => {
         console.log(e.response.data)
         if (e.response.data.error.code === "context_length_exceeded") {
             //how to reduce the length of the messages or completion
-            return `Estou encerrando, a gente já conversou demais`
+            return `Infelizmente chegou no meu limite de tokens, favor retornar amanha para continuarmos o chat.`
         }
         return `❌ OpenAI Response Error: ${e.data}`
     }

@@ -13,15 +13,15 @@ function personaResponse(client, message, messageLog, temperature) {
 
 const commands = (client, message, messageLog) => {
     let firstWord = message.body.substring(0, message.body.indexOf(" "));
-    if (firstWord === "/gpt") {
-        personaResponse(client, message, messageLog.assistant, 0.2)
-    } else if (firstWord === "/socrat") {
+    if (firstWord === "gpt") {
+        personaResponse(client, message, messageLog.assistant, 0.5)
+    } else if (firstWord === "socrat") {
         personaResponse(client, message, messageLog.socrat, 1)
-    } else if (firstWord === "/rpg") {
+    } else if (firstWord === "rpg") {
         personaResponse(client, message, messageLog.rpg, 1.1)
-    } else if (firstWord === "/anarchy") {
+    } else if (firstWord === "anarchy") {
         personaResponse(client, message, messageLog.anarchy, 1.2)
-    } else if (firstWord === "/localimg") {
+    } else if (firstWord === "localimg") {
         const imgDescription = message.body.substring(message.body.indexOf(" "));
         getDalleResponse(imgDescription, message).then((imgUrl) => {
             client.sendImage(

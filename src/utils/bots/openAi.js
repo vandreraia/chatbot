@@ -1,11 +1,10 @@
 import openai from "../../config/openAi.js";
 
 const getGpt3Response = async (messageLog, temperature = 0.8) => {
-    console.log(temperature)
     const options = {
         model: "gpt-3.5-turbo", // Modelo GPT a ser usado
         messages: messageLog,
-        temperature, // Nível de variação das respostas geradas, 2 é o máximo
+        temperature, // Nível de variação das respostas geradas, 2 é o máximo, mas que 1.5 começa a vim palavras que não existem
     }
     try {
         const completion = await openai.createChatCompletion(options);

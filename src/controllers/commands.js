@@ -12,7 +12,7 @@ function personaResponse(client, message, messageLog, temperature) {
 }
 
 const commands = (client, message, messageLog) => {
-    let firstWord = message.body.substring(0, message.body.indexOf(" "));
+    let firstWord = message.body.substring(0, message.body.indexOf(" ")).toLowerCase();
     if (firstWord === "gpt") {
         personaResponse(client, message, messageLog.assistant, 0.5)
     } else if (firstWord === "socrat") {
